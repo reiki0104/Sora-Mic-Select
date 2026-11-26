@@ -3,360 +3,200 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b09">
-<meta name="description" content="Sora Select - あなたにぴったりのマイクを見つける比較サイト">
-<title>Sora Select | 最高の音を、最高の選択で。</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Select | マイク比較</title>
 <style>
-:root {
-  --bg:#080b09;
-  --panel:#111713;
-  --green:#a3ff57;
-  --muted:#929c94;
-  --line:#26342a;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:var(--bg);
-  color:#f3f7f3;
-  font-family:Arial,"Noto Sans JP",sans-serif;
-}
-header {
-  padding:22px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-  position:sticky;
-  top:0;
-  background:rgba(8,11,9,.95);
-  z-index:10;
-}
-.logo {
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.logo span {color:var(--green)}
-nav a {
-  color:#c5cec6;
-  text-decoration:none;
-  margin-left:22px;
-  font-size:14px;
-}
-nav a:hover {color:var(--green)}
-.hero {
-  padding:100px 8% 85px;
-  background:radial-gradient(ellipse at 80% 30%,#19351d 0%,transparent 55%);
-}
-.tag {
-  color:var(--green);
-  letter-spacing:3px;
-  font-size:12px;
-}
-h1 {
-  font-size:clamp(38px,7vw,68px);
-  line-height:1.2;
-  margin:22px 0;
-}
-h1 span {color:var(--green)}
-.hero p {
-  color:var(--muted);
-  line-height:1.9;
-}
-.btn {
-  display:inline-block;
-  background:var(--green);
-  color:#10170d;
-  padding:14px 25px;
-  border-radius:5px;
-  text-decoration:none;
-  font-weight:bold;
-  margin-top:20px;
-}
-.btn:hover {opacity:.8}
-section {padding:60px 7%}
-.section-title {
-  font-size:28px;
-  margin-bottom:8px;
-}
-.sub {
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:30px;
-}
-.filters {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-.filter {
-  background:#151d17;
-  color:white;
-  border:1px solid var(--line);
-  padding:10px 17px;
-  border-radius:30px;
-  cursor:pointer;
-}
-.filter.active {
-  background:var(--green);
-  color:#111;
-  border-color:var(--green);
-}
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-.card {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:10px;
-  overflow:hidden;
-  transition:.2s;
-}
-.card:hover {
-  transform:translateY(-5px);
-  border-color:var(--green);
-}
-.product-img {
-  height:170px;
-  background:#19221b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--green);
-  font-size:55px;
-}
-.card-content {padding:18px}
-.brand {
-  font-size:11px;
-  color:var(--green);
-  letter-spacing:2px;
-}
-.card h3 {
-  font-size:18px;
-  margin:9px 0;
-}
-.price {
-  font-size:23px;
-  font-weight:bold;
-}
-.description {
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.7;
-  min-height:45px;
-}
-.spec {
-  font-size:12px;
-  color:#c6d0c7;
-  margin:12px 0;
-}
-.detail {
-  display:block;
-  text-align:center;
-  padding:11px;
-  background:#26372a;
-  color:var(--green);
-  text-decoration:none;
-  border-radius:5px;
-  font-size:13px;
-}
-.notice {
-  background:#111913;
-  border:1px solid var(--line);
-  padding:22px;
-  border-radius:8px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-footer {
-  padding:35px 7%;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:12px;
-}
-@media(max-width:600px) {
-  header {padding:18px 5%}
-  nav a {margin-left:10px;font-size:12px}
-  .hero {padding:65px 6%}
-  section {padding:40px 5%}
-}
+:root{--green:#a3ff57;--bg:#080b09;--panel:#111713;--line:#29382d;--muted:#a1aca4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#f3f7f3;font-family:Arial,sans-serif}
+header{padding:22px 6%;border-bottom:1px solid var(--line);font-size:24px;font-weight:900}
+header span,h1 span{color:var(--green)}
+.hero{padding:65px 6%;background:radial-gradient(ellipse at 85% 20%,#244629,transparent 65%)}
+.tag{color:var(--green);font-size:12px;letter-spacing:3px}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.3}
+p{line-height:1.8}
+.hero p,.muted{color:var(--muted)}
+section{padding:35px 6%}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
+input,select{background:var(--panel);color:white;border:1px solid var(--line);border-radius:8px;padding:13px;font-size:14px}
+input{flex:1;min-width:180px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.card:hover{border-color:var(--green)}
+.photo{height:180px;background:radial-gradient(#263d2b,#101713);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--muted);font-size:12px}
+.photo img{width:100%;height:100%;object-fit:contain}
+.mic{font-size:65px;color:var(--green)}
+.content{padding:20px;flex:1;display:flex;flex-direction:column}
+.brand{color:var(--green);font-size:12px;letter-spacing:2px}
+h2{margin:10px 0}
+.price{font-size:25px;font-weight:bold;margin:10px 0}
+.spec{font-size:12px;background:#233329;padding:8px;border-radius:5px}
+.info{font-size:14px;line-height:1.7}
+.good{color:#a3ff57}
+.bad{color:#ff9b91}
+.use{color:#a9caff}
+.amazon{display:block;background:#ff9900;color:#151515;text-align:center;text-decoration:none;padding:14px;border-radius:8px;font-weight:bold;margin-top:auto}
+.amazon:hover{background:#ffb747}
+footer{border-top:1px solid var(--line);padding:30px 6%;color:var(--muted);font-size:12px}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">SORA <span>SELECT.</span></div>
-  <nav>
-    <a href="#products">商品一覧</a>
-    <a href="#about">サイトについて</a>
-  </nav>
-</header>
-
+<header>SORA <span>SELECT.</span></header>
 <div class="hero">
-  <div class="tag">YOUR BEST SOUND STARTS HERE.</div>
-  <h1>最高の音を、<br><span>最高の選択で。</span></h1>
-  <p>
-    配信・ゲーム・実況・通話。<br>
-    あなたにぴったりのマイクを見つけよう。
-  </p>
-  <a href="#products" class="btn">マイクを探す →</a>
+<div class="tag">FIND YOUR BEST SOUND.</div>
+<h1>最高の音を、<br><span>最高の選択で。</span></h1>
+<p>ゲーム・配信・実況・録音。<br>あなたに合ったマイクを見つけよう。</p>
 </div>
-
-<section id="products">
-  <h2 class="section-title">PICK UP MICROPHONES.</h2>
-  <p class="sub">注目のマイクを厳選して紹介。</p>
-
-  <div class="filters">
-    <button class="filter active" onclick="filterProducts('all',this)">すべて</button>
-    <button class="filter" onclick="filterProducts('usb',this)">USB接続</button>
-    <button class="filter" onclick="filterProducts('xlr',this)">XLR接続</button>
-    <button class="filter" onclick="filterProducts('gaming',this)">ゲーム・配信向け</button>
-  </div>
-
-  <div class="grid" id="productGrid"></div>
+<section>
+<h2>MICROPHONE SELECT.</h2>
+<p class="muted">特徴・価格・用途からマイクを比較</p>
+<div class="controls">
+<input id="search" placeholder="商品名・メーカー名で検索">
+<select id="connection">
+<option value="all">すべての接続方式</option>
+<option value="USB">USB接続</option>
+<option value="XLR">XLR接続</option>
+</select>
+<select id="sort">
+<option value="default">掲載順</option>
+<option value="low">価格が安い順</option>
+<option value="high">価格が高い順</option>
+</select>
+</div>
+<p id="count" class="muted"></p>
+<div class="grid" id="products"></div>
 </section>
-
-<section id="about">
-  <h2 class="section-title">ABOUT SORA SELECT.</h2>
-  <p class="sub">マイク選びを、もっと分かりやすく。</p>
-  <div class="notice">
-    Sora Selectは、マイク選びに役立つ情報をまとめた比較サイトです。<br>
-    価格だけでなく、接続方法や使用用途なども考慮して、自分に合った1本を見つけるお手伝いをします。<br><br>
-    ※掲載価格・仕様は参考情報です。実際の販売価格や仕様は購入前に販売店でご確認ください。
-  </div>
-</section>
-
 <footer>
-  © 2026 Sora Select. All rights reserved.
+<p>掲載価格は参考価格であり、現在の販売価格を保証するものではありません。Amazonで最新の価格・仕様をご確認ください。</p>
+<p>使用感は製品の仕様に基づく一般的な評価であり、実機レビューではありません。</p>
+© 2026 Sora Select.
 </footer>
-
 <script>
-const products = [
- {
-  brand:"FIFINE",
-  name:"AM8",
-  price:"約8,000円",
-  type:["usb","xlr","gaming"],
-  desc:"USB・XLR両対応。ゲーム配信にも使いやすい。",
-  spec:"USB / XLR"
- },
- {
-  brand:"FIFINE",
-  name:"K688",
-  price:"約10,000円",
-  type:["usb","xlr","gaming"],
-  desc:"ダイナミック型。配信や実況におすすめ。",
-  spec:"USB / XLR"
- },
- {
-  brand:"HyperX",
-  name:"QuadCast 2",
-  price:"約20,000円",
-  type:["usb","gaming"],
-  desc:"人気のUSBコンデンサーマイク。",
-  spec:"USB"
- },
- {
-  brand:"Audio-Technica",
-  name:"AT2020USB-X",
-  price:"約20,000円",
-  type:["usb"],
-  desc:"クリアな音声を目指すUSBマイク。",
-  spec:"USB"
- },
- {
-  brand:"Razer",
-  name:"Seiren V3 Chroma",
-  price:"約18,000円",
-  type:["usb","gaming"],
-  desc:"ライティングも楽しめる配信用マイク。",
-  spec:"USB"
- },
- {
-  brand:"Elgato",
-  name:"Wave:3",
-  price:"約20,000円",
-  type:["usb","gaming"],
-  desc:"配信者向けの音声コントロール機能。",
-  spec:"USB"
- },
- {
-  brand:"SHURE",
-  name:"MV7",
-  price:"約30,000円",
-  type:["usb","xlr","gaming"],
-  desc:"USB・XLR対応の人気ダイナミックマイク。",
-  spec:"USB / XLR"
- },
- {
-  brand:"RODE",
-  name:"NT-USB Mini",
-  price:"約15,000円",
-  type:["usb"],
-  desc:"コンパクトなUSBコンデンサーマイク。",
-  spec:"USB"
- },
- {
-  brand:"MAONO",
-  name:"PD200X",
-  price:"約10,000円",
-  type:["usb","xlr","gaming"],
-  desc:"USB・XLR対応のコスト重視モデル。",
-  spec:"USB / XLR"
- },
- {
-  brand:"FIFINE",
-  name:"K688T",
-  price:"約15,000円",
-  type:["usb","xlr","gaming"],
-  desc:"アーム付きセットも選べる配信用モデル。",
-  spec:"USB / XLR"
- }
+const products=[
+{
+brand:"FIFINE",name:"AM8",price:8000,
+connection:"USB / XLR",kind:"ダイナミック",
+good:"周囲の音を抑えやすく、USBとXLRの両方に対応。",
+bad:"口元に近づけて使用する必要がある。",
+use:"ゲーム実況・Discord・初めての配信",
+image:""
+},
+{
+brand:"FIFINE",name:"K688",price:10000,
+connection:"USB / XLR",kind:"ダイナミック",
+good:"価格を抑えながら落ち着いた声を録音しやすい。",
+bad:"離れた位置からの集音には不向き。",
+use:"配信・ナレーション・ポッドキャスト",
+image:""
+},
+{
+brand:"HyperX",name:"QuadCast 2",price:20000,
+connection:"USB",kind:"コンデンサー",
+good:"複数の指向性と便利なミュート機能。",
+bad:"キーボード音や生活音を拾う場合がある。",
+use:"ゲーム配信・通話・複数人での録音",
+image:""
+},
+{
+brand:"Audio-Technica",name:"AT2020USB-X",price:20000,
+connection:"USB",kind:"コンデンサー",
+good:"繊細な声や楽器の音を収録しやすい。",
+bad:"反響や周囲の騒音に注意が必要。",
+use:"歌ってみた・ナレーション・音声収録",
+image:""
+},
+{
+brand:"Razer",name:"Seiren V3 Chroma",price:18000,
+connection:"USB",kind:"コンデンサー",
+good:"RGB照明とタップ式ミュートを搭載。",
+bad:"照明や専用機能を必要としない人には割高な場合がある。",
+use:"ゲーム実況・デスク環境の演出",
+image:""
+},
+{
+brand:"Elgato",name:"Wave:3",price:20000,
+connection:"USB",kind:"コンデンサー",
+good:"Wave Linkによる配信音声の管理が便利。",
+bad:"機能を活用するには対応PCとソフトが必要。",
+use:"PC配信・ゲーム実況",
+image:""
+},
+{
+brand:"SHURE",name:"MV7",price:30000,
+connection:"USB / XLR",kind:"ダイナミック",
+good:"近接収録に適し、声を中心に録音しやすい。",
+bad:"価格が高めで、マイクスタンドも必要。",
+use:"本格配信・ポッドキャスト・実況",
+image:""
+},
+{
+brand:"RODE",name:"NT-USB Mini",price:15000,
+connection:"USB",kind:"コンデンサー",
+good:"コンパクトで設置しやすく、操作も簡単。",
+bad:"設置位置によっては机の振動や環境音を拾う。",
+use:"通話・宅録・省スペース環境",
+image:""
+},
+{
+brand:"MAONO",name:"PD200X",price:10000,
+connection:"USB / XLR",kind:"ダイナミック",
+good:"手頃な価格でUSBとXLRに対応。",
+bad:"マイクとの距離やゲインの調整が必要。",
+use:"ゲーム・配信初心者・通話",
+image:""
+},
+{
+brand:"FIFINE",name:"K688T",price:15000,
+connection:"USB / XLR",kind:"ダイナミック",
+good:"マイクアーム付きセットで環境を整えやすい。",
+bad:"机へのアーム取り付けスペースが必要。",
+use:"配信環境をまとめて揃えたい人",
+image:""
+}
 ];
 
-function renderProducts(items) {
- const grid = document.getElementById("productGrid");
+function render(){
+const search=document.getElementById("search").value.toLowerCase();
+const connection=document.getElementById("connection").value;
+const sort=document.getElementById("sort").value;
 
- grid.innerHTML = items.map(p => `
-  <article class="card">
-   <div class="product-img">🎙</div>
-   <div class="card-content">
-    <div class="brand">${p.brand}</div>
-    <h3>${p.name}</h3>
-    <div class="price">${p.price}</div>
-    <p class="description">${p.desc}</p>
-    <div class="spec">接続方式：${p.spec}</div>
-    <a href="#about" class="detail">商品情報を見る →</a>
-   </div>
-  </article>
- `).join("");
+let list=products.filter(p=>
+(p.brand+" "+p.name).toLowerCase().includes(search)
+&&(connection==="all"||p.connection.includes(connection))
+);
+
+if(sort==="low")list.sort((a,b)=>a.price-b.price);
+if(sort==="high")list.sort((a,b)=>b.price-a.price);
+
+document.getElementById("count").textContent=list.length+"件の商品";
+
+document.getElementById("products").innerHTML=list.map(p=>{
+const url="https://www.amazon.co.jp/s?k="+encodeURIComponent(p.brand+" "+p.name);
+return `
+<article class="card">
+<div class="photo">
+${p.image?`<img src="${p.image}" alt="${p.brand} ${p.name}">`:`<div class="mic">🎙</div><span>商品写真準備中</span>`}
+</div>
+<div class="content">
+<div class="brand">${p.brand}</div>
+<h2>${p.name}</h2>
+<div class="price">約 ¥${p.price.toLocaleString("ja-JP")}</div>
+<div class="spec">${p.connection} ｜ ${p.kind}</div>
+<div class="info">
+<p><b class="good">✓ メリット</b><br>${p.good}</p>
+<p><b class="bad">△ デメリット</b><br>${p.bad}</p>
+<p><b class="use">おすすめの用途</b><br>${p.use}</p>
+</div>
+<a class="amazon" href="${url}" target="_blank" rel="noopener noreferrer">Amazonで商品を探す →</a>
+</div>
+</article>`;
+}).join("");
 }
-
-function filterProducts(type,button) {
- document.querySelectorAll(".filter").forEach(b => {
-  b.classList.remove("active");
- });
-
- button.classList.add("active");
-
- const filtered = type === "all"
-  ? products
-  : products.filter(p => p.type.includes(type));
-
- renderProducts(filtered);
-}
-
-renderProducts(products);
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("connection").addEventListener("change",render);
+document.getElementById("sort").addEventListener("change",render);
+render();
 </script>
-
 </body>
 </html>
