@@ -4,179 +4,523 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b09">
 <title>Sora Select | マイク比較</title>
 <style>
-:root{--green:#a3ff57;--bg:#080b09;--panel:#111713;--line:#29382d;--muted:#a1aca4}
+:root{
+ --green:#a3ff57;
+ --bg:#080b09;
+ --panel:#111713;
+ --line:#29382d;
+ --muted:#a1aca4;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:#f3f7f3;font-family:Arial,sans-serif}
-header{padding:22px 6%;border-bottom:1px solid var(--line);font-size:24px;font-weight:900}
-header span,h1 span{color:var(--green)}
-.hero{padding:65px 6%;background:radial-gradient(ellipse at 85% 20%,#244629,transparent 65%)}
-.tag{color:var(--green);font-size:12px;letter-spacing:3px}
-h1{font-size:clamp(34px,6vw,64px);line-height:1.3}
+body{
+ margin:0;
+ background:var(--bg);
+ color:#f3f7f3;
+ font-family:Arial,"Noto Sans JP",sans-serif;
+}
+header{
+ padding:22px 6%;
+ border-bottom:1px solid var(--line);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:#080b09;
+}
+.logo{font-size:24px;font-weight:900}
+.logo span,h1 span{color:var(--green)}
+.version{font-size:11px;color:var(--muted)}
+.hero{
+ padding:75px 6%;
+ background:radial-gradient(ellipse at 85% 20%,#244629,transparent 65%);
+}
+.tag{
+ color:var(--green);
+ font-size:12px;
+ letter-spacing:3px;
+}
+h1{
+ font-size:clamp(34px,6vw,64px);
+ line-height:1.3;
+ margin:20px 0;
+}
 p{line-height:1.8}
-.hero p,.muted{color:var(--muted)}
-section{padding:35px 6%}
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
-input,select{background:var(--panel);color:white;border:1px solid var(--line);border-radius:8px;padding:13px;font-size:14px}
-input{flex:1;min-width:180px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
-.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
-.card:hover{border-color:var(--green)}
-.photo{height:180px;background:radial-gradient(#263d2b,#101713);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--muted);font-size:12px}
-.photo img{width:100%;height:100%;object-fit:contain}
-.mic{font-size:65px;color:var(--green)}
-.content{padding:20px;flex:1;display:flex;flex-direction:column}
-.brand{color:var(--green);font-size:12px;letter-spacing:2px}
+.muted,.hero p{color:var(--muted)}
+.start{
+ display:inline-block;
+ background:var(--green);
+ color:#101710;
+ text-decoration:none;
+ padding:14px 24px;
+ border-radius:8px;
+ font-weight:bold;
+}
+section{padding:40px 6%}
+.controls{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ gap:10px;
+ margin:25px 0;
+}
+input,select{
+ width:100%;
+ background:var(--panel);
+ color:white;
+ border:1px solid var(--line);
+ border-radius:8px;
+ padding:13px;
+ font-size:14px;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+ gap:20px;
+}
+.card{
+ border:1px solid var(--line);
+ border-radius:14px;
+ background:var(--panel);
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
+ transition:.2s;
+}
+.card:hover{
+ border-color:var(--green);
+ transform:translateY(-3px);
+}
+.photo{
+ height:220px;
+ position:relative;
+ background:radial-gradient(#2b4030,#101713);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+.photo img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+}
+.photo svg{height:100%;max-width:100%}
+.image-note{
+ position:absolute;
+ bottom:8px;
+ right:10px;
+ color:var(--muted);
+ font-size:10px;
+}
+.content{
+ padding:20px;
+ flex:1;
+ display:flex;
+ flex-direction:column;
+}
+.brand{
+ color:var(--green);
+ font-size:12px;
+ letter-spacing:2px;
+}
 h2{margin:10px 0}
-.price{font-size:25px;font-weight:bold;margin:10px 0}
-.spec{font-size:12px;background:#233329;padding:8px;border-radius:5px}
-.info{font-size:14px;line-height:1.7}
+.price{
+ font-size:27px;
+ font-weight:bold;
+ margin:12px 0;
+}
+.spec{
+ font-size:12px;
+ background:#233329;
+ padding:9px;
+ border-radius:5px;
+}
+.info{
+ font-size:14px;
+ line-height:1.7;
+}
 .good{color:#a3ff57}
 .bad{color:#ff9b91}
 .use{color:#a9caff}
-.amazon{display:block;background:#ff9900;color:#151515;text-align:center;text-decoration:none;padding:14px;border-radius:8px;font-weight:bold;margin-top:auto}
+.amazon{
+ display:block;
+ background:#ff9900;
+ color:#151515;
+ text-align:center;
+ text-decoration:none;
+ padding:14px;
+ border-radius:8px;
+ font-weight:bold;
+ margin-top:auto;
+}
 .amazon:hover{background:#ffb747}
-footer{border-top:1px solid var(--line);padding:30px 6%;color:var(--muted);font-size:12px}
+.reset{
+ background:#233329;
+ border:1px solid var(--line);
+ color:white;
+ padding:12px;
+ border-radius:8px;
+ cursor:pointer;
+}
+.guide{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:15px;
+}
+.guide article{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:10px;
+ padding:20px;
+}
+.guide h3{color:var(--green)}
+footer{
+ border-top:1px solid var(--line);
+ padding:30px 6%;
+ color:var(--muted);
+ font-size:12px;
+}
+@media(max-width:600px){
+ header{padding:18px 5%}
+ section{padding:30px 5%}
+ .hero{padding:55px 5%}
+ .controls{grid-template-columns:1fr 1fr}
+ #search{grid-column:1/-1}
+}
 </style>
 </head>
 <body>
-<header>SORA <span>SELECT.</span></header>
+
+<header>
+ <div class="logo">SORA <span>SELECT.</span></div>
+ <div class="version">VER. 3.0</div>
+</header>
+
 <div class="hero">
-<div class="tag">FIND YOUR BEST SOUND.</div>
-<h1>最高の音を、<br><span>最高の選択で。</span></h1>
-<p>ゲーム・配信・実況・録音。<br>あなたに合ったマイクを見つけよう。</p>
+ <div class="tag">FIND YOUR BEST SOUND.</div>
+ <h1>最高の音を、<br><span>最高の選択で。</span></h1>
+ <p>ゲーム・配信・実況・録音。<br>
+ 15種類のマイクから、自分に合った1本を。</p>
+ <a class="start" href="#catalog">マイクを探す →</a>
 </div>
-<section>
+
+<section id="catalog">
 <h2>MICROPHONE SELECT.</h2>
-<p class="muted">特徴・価格・用途からマイクを比較</p>
+<p class="muted">価格・性能・用途からマイクを比較</p>
+
 <div class="controls">
 <input id="search" placeholder="商品名・メーカー名で検索">
+
+<select id="budget">
+<option value="all">すべての価格帯</option>
+<option value="low">15,000円未満</option>
+<option value="middle">15,000〜19,999円</option>
+<option value="high">20,000〜30,000円</option>
+</select>
+
 <select id="connection">
 <option value="all">すべての接続方式</option>
 <option value="USB">USB接続</option>
 <option value="XLR">XLR接続</option>
 </select>
+
+<select id="kind">
+<option value="all">すべてのマイク</option>
+<option value="ダイナミック">ダイナミック型</option>
+<option value="コンデンサー">コンデンサー型</option>
+</select>
+
 <select id="sort">
 <option value="default">掲載順</option>
 <option value="low">価格が安い順</option>
 <option value="high">価格が高い順</option>
 </select>
+
+<button class="reset" onclick="resetFilters()">
+絞り込みをリセット
+</button>
 </div>
+
 <p id="count" class="muted"></p>
 <div class="grid" id="products"></div>
 </section>
+
+<section>
+<h2>MICROPHONE GUIDE.</h2>
+<p class="muted">マイク選びの基礎知識</p>
+
+<div class="guide">
+<article>
+<h3>ダイナミックマイク</h3>
+<p>口元に近づけて使用するタイプ。適切に設置するとキーボード音や周囲の雑音を抑えやすく、ゲームや配信に向いています。</p>
+</article>
+<article>
+<h3>コンデンサーマイク</h3>
+<p>繊細な音を収録しやすいタイプ。歌や楽器の録音にも向いていますが、部屋の反響や環境音に注意が必要です。</p>
+</article>
+<article>
+<h3>USB接続</h3>
+<p>対応するPCなどに直接接続できるため、初心者でも扱いやすい接続方式です。</p>
+</article>
+<article>
+<h3>XLR接続</h3>
+<p>オーディオインターフェースなどを使用する接続方式。機材を組み合わせて本格的な音声環境を構築できます。</p>
+</article>
+</div>
+</section>
+
 <footer>
-<p>掲載価格は参考価格であり、現在の販売価格を保証するものではありません。Amazonで最新の価格・仕様をご確認ください。</p>
-<p>使用感は製品の仕様に基づく一般的な評価であり、実機レビューではありません。</p>
+<p>掲載価格は参考価格です。最新の価格・在庫・対応機器は販売店でご確認ください。</p>
+<p>製品評価は仕様に基づく一般的な評価であり、実機レビューではありません。</p>
+<p>商品画像が未登録の場合はイメージイラストを表示しています。</p>
 © 2026 Sora Select.
 </footer>
+
 <script>
 const products=[
 {
-brand:"FIFINE",name:"AM8",price:8000,
-connection:"USB / XLR",kind:"ダイナミック",
-good:"周囲の音を抑えやすく、USBとXLRの両方に対応。",
+brand:"FIFINE",
+name:"AM8",
+price:8000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"低価格ながらUSB・XLR両対応。RGB照明も搭載。",
 bad:"口元に近づけて使用する必要がある。",
-use:"ゲーム実況・Discord・初めての配信",
+use:"ゲーム・Discord・配信初心者",
 image:""
 },
 {
-brand:"FIFINE",name:"K688",price:10000,
-connection:"USB / XLR",kind:"ダイナミック",
-good:"価格を抑えながら落ち着いた声を録音しやすい。",
-bad:"離れた位置からの集音には不向き。",
-use:"配信・ナレーション・ポッドキャスト",
+brand:"FIFINE",
+name:"K688",
+price:10000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"コストを抑えながら声を中心に収録しやすい。",
+bad:"離れた位置からの収録には不向き。",
+use:"ゲーム実況・ナレーション",
 image:""
 },
 {
-brand:"HyperX",name:"QuadCast 2",price:20000,
-connection:"USB",kind:"コンデンサー",
-good:"複数の指向性と便利なミュート機能。",
-bad:"キーボード音や生活音を拾う場合がある。",
-use:"ゲーム配信・通話・複数人での録音",
+brand:"HyperX",
+name:"QuadCast 2",
+price:20000,
+connection:"USB",
+kind:"コンデンサー",
+good:"複数の指向性とタップ式ミュート機能。",
+bad:"環境によってキーボード音を拾いやすい。",
+use:"ゲーム配信・通話・録音",
 image:""
 },
 {
-brand:"Audio-Technica",name:"AT2020USB-X",price:20000,
-connection:"USB",kind:"コンデンサー",
-good:"繊細な声や楽器の音を収録しやすい。",
-bad:"反響や周囲の騒音に注意が必要。",
-use:"歌ってみた・ナレーション・音声収録",
+brand:"Audio-Technica",
+name:"AT2020USB-X",
+price:20000,
+connection:"USB",
+kind:"コンデンサー",
+good:"繊細な音声をクリアに収録しやすい。",
+bad:"部屋の反響や生活音に注意が必要。",
+use:"歌ってみた・ナレーション",
 image:""
 },
 {
-brand:"Razer",name:"Seiren V3 Chroma",price:18000,
-connection:"USB",kind:"コンデンサー",
-good:"RGB照明とタップ式ミュートを搭載。",
-bad:"照明や専用機能を必要としない人には割高な場合がある。",
+brand:"Razer",
+name:"Seiren V3 Chroma",
+price:18000,
+connection:"USB",
+kind:"コンデンサー",
+good:"RGB照明と便利なタップ式ミュート。",
+bad:"照明を重視しない人には割高な場合がある。",
 use:"ゲーム実況・デスク環境の演出",
 image:""
 },
 {
-brand:"Elgato",name:"Wave:3",price:20000,
-connection:"USB",kind:"コンデンサー",
+brand:"Elgato",
+name:"Wave:3",
+price:20000,
+connection:"USB",
+kind:"コンデンサー",
 good:"Wave Linkによる配信音声の管理が便利。",
-bad:"機能を活用するには対応PCとソフトが必要。",
+bad:"専用機能の活用には対応PCが必要。",
 use:"PC配信・ゲーム実況",
 image:""
 },
 {
-brand:"SHURE",name:"MV7",price:30000,
-connection:"USB / XLR",kind:"ダイナミック",
-good:"近接収録に適し、声を中心に録音しやすい。",
-bad:"価格が高めで、マイクスタンドも必要。",
-use:"本格配信・ポッドキャスト・実況",
+brand:"SHURE",
+name:"MV7",
+price:30000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"近接収録に適した本格的な音声収録。",
+bad:"価格が高く、スタンドなども必要。",
+use:"本格配信・ポッドキャスト",
 image:""
 },
 {
-brand:"RODE",name:"NT-USB Mini",price:15000,
-connection:"USB",kind:"コンデンサー",
-good:"コンパクトで設置しやすく、操作も簡単。",
-bad:"設置位置によっては机の振動や環境音を拾う。",
+brand:"RODE",
+name:"NT-USB Mini",
+price:15000,
+connection:"USB",
+kind:"コンデンサー",
+good:"コンパクトで設置しやすい。",
+bad:"設置位置によって環境音を拾う。",
 use:"通話・宅録・省スペース環境",
 image:""
 },
 {
-brand:"MAONO",name:"PD200X",price:10000,
-connection:"USB / XLR",kind:"ダイナミック",
-good:"手頃な価格でUSBとXLRに対応。",
-bad:"マイクとの距離やゲインの調整が必要。",
-use:"ゲーム・配信初心者・通話",
+brand:"MAONO",
+name:"PD200X",
+price:10000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"手頃な価格でUSB・XLRに対応。",
+bad:"距離やゲインの調整が必要。",
+use:"ゲーム・配信初心者",
 image:""
 },
 {
-brand:"FIFINE",name:"K688T",price:15000,
-connection:"USB / XLR",kind:"ダイナミック",
-good:"マイクアーム付きセットで環境を整えやすい。",
-bad:"机へのアーム取り付けスペースが必要。",
+brand:"FIFINE",
+name:"K688T",
+price:15000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"アーム付きセットで環境を整えやすい。",
+bad:"机にアームを取り付ける場所が必要。",
 use:"配信環境をまとめて揃えたい人",
+image:""
+},
+{
+brand:"SHURE",
+name:"MV7X",
+price:25000,
+connection:"XLR",
+kind:"ダイナミック",
+good:"声の近接収録に適した本格的なXLRマイク。",
+bad:"USB非対応。オーディオインターフェースが必要。",
+use:"本格配信・実況・ポッドキャスト",
+image:""
+},
+{
+brand:"RODE",
+name:"PodMic USB",
+price:30000,
+connection:"USB / XLR",
+kind:"ダイナミック",
+good:"USB・XLR両対応。内蔵DSPによる音声処理にも対応。",
+bad:"本体が重く、耐荷重のあるアームが必要。",
+use:"本格配信・ナレーション・実況",
+image:""
+},
+{
+brand:"SteelSeries",
+name:"Alias",
+price:28000,
+connection:"USB",
+kind:"コンデンサー",
+good:"Sonarソフトによる配信向け音声管理が便利。",
+bad:"ソフトの機能を活用するには対応PCが必要。",
+use:"PCゲーム・配信・実況",
+image:""
+},
+{
+brand:"HyperX",
+name:"QuadCast 2 S",
+price:30000,
+connection:"USB",
+kind:"コンデンサー",
+good:"高精細なRGB照明と複数の指向性を搭載。",
+bad:"価格が高く、環境音への対策も必要。",
+use:"配信・見た目重視のゲーミング環境",
+image:""
+},
+{
+brand:"Audio-Technica",
+name:"AT2040USB",
+price:22000,
+connection:"USB",
+kind:"ダイナミック",
+good:"ハイパーカーディオイド指向性で声を中心に収録しやすい。",
+bad:"XLR非対応。口元との距離調整が必要。",
+use:"ゲーム実況・配信・ナレーション",
 image:""
 }
 ];
 
+function illustration(p){
+const dynamic=p.kind==="ダイナミック";
+
+return `
+<svg viewBox="0 0 240 220"
+xmlns="http://www.w3.org/2000/svg"
+role="img" aria-label="マイクのイメージイラスト">
+<defs>
+<linearGradient id="metal${p.name.replace(/[^a-zA-Z0-9]/g,"")}" x1="0" x2="1">
+<stop offset="0%" stop-color="#222"/>
+<stop offset="50%" stop-color="#555"/>
+<stop offset="100%" stop-color="#161616"/>
+</linearGradient>
+</defs>
+<ellipse cx="120" cy="205" rx="65" ry="8" fill="#080b09"/>
+<rect x="113" y="151" width="14" height="48" rx="5" fill="#555"/>
+<rect x="65" y="195" width="110" height="10" rx="5" fill="#333"/>
+<path d="M72 105 V130 Q72 170 120 170 Q168 170 168 130 V105"
+fill="none" stroke="#666" stroke-width="7"/>
+<rect x="${dynamic?89:81}" y="15"
+width="${dynamic?62:78}" height="140" rx="25"
+fill="url(#metal${p.name.replace(/[^a-zA-Z0-9]/g,"")})"
+stroke="#777" stroke-width="2"/>
+<rect x="${dynamic?94:86}" y="20"
+width="${dynamic?52:68}" height="${dynamic?65:92}"
+rx="20" fill="#191919"/>
+${Array.from({length:9},(_,i)=>
+`<line x1="${dynamic?99:91}" y1="${30+i*6}"
+x2="${dynamic?141:149}" y2="${30+i*6}"
+stroke="#777" stroke-width="2"/>`).join("")}
+<rect x="108" y="120" width="24" height="5" rx="2" fill="#a3ff57"/>
+<circle cx="120" cy="137" r="5" fill="#777"/>
+</svg>`;
+}
+
 function render(){
-const search=document.getElementById("search").value.toLowerCase();
+const search=document.getElementById("search").value.toLowerCase().trim();
+const budget=document.getElementById("budget").value;
 const connection=document.getElementById("connection").value;
+const kind=document.getElementById("kind").value;
 const sort=document.getElementById("sort").value;
 
-let list=products.filter(p=>
-(p.brand+" "+p.name).toLowerCase().includes(search)
+let list=products.filter(p=>{
+const matchesSearch=
+(p.brand+" "+p.name).toLowerCase().includes(search);
+
+const matchesBudget=
+budget==="all"||
+(budget==="low"&&p.price<15000)||
+(budget==="middle"&&p.price>=15000&&p.price<20000)||
+(budget==="high"&&p.price>=20000&&p.price<=30000);
+
+return matchesSearch&&matchesBudget
 &&(connection==="all"||p.connection.includes(connection))
-);
+&&(kind==="all"||p.kind===kind);
+});
 
 if(sort==="low")list.sort((a,b)=>a.price-b.price);
 if(sort==="high")list.sort((a,b)=>b.price-a.price);
 
-document.getElementById("count").textContent=list.length+"件の商品";
+document.getElementById("count").textContent=
+list.length+" / "+products.length+" 件の商品";
 
-document.getElementById("products").innerHTML=list.map(p=>{
-const url="https://www.amazon.co.jp/s?k="+encodeURIComponent(p.brand+" "+p.name);
+document.getElementById("products").innerHTML=
+list.length?list.map(p=>{
+const url="https://www.amazon.co.jp/s?k="+
+encodeURIComponent(p.brand+" "+p.name);
+
 return `
 <article class="card">
 <div class="photo">
-${p.image?`<img src="${p.image}" alt="${p.brand} ${p.name}">`:`<div class="mic">🎙</div><span>商品写真準備中</span>`}
+${p.image?
+`<img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy">`:
+illustration(p)+`<span class="image-note">イメージイラスト</span>`}
 </div>
 <div class="content">
 <div class="brand">${p.brand}</div>
@@ -188,14 +532,28 @@ ${p.image?`<img src="${p.image}" alt="${p.brand} ${p.name}">`:`<div class="mic">
 <p><b class="bad">△ デメリット</b><br>${p.bad}</p>
 <p><b class="use">おすすめの用途</b><br>${p.use}</p>
 </div>
-<a class="amazon" href="${url}" target="_blank" rel="noopener noreferrer">Amazonで商品を探す →</a>
+<a class="amazon" href="${url}"
+target="_blank" rel="noopener noreferrer">
+Amazonで商品を探す →
+</a>
 </div>
 </article>`;
-}).join("");
+}).join(""):`<p>条件に一致する商品がありません。</p>`;
 }
+
+function resetFilters(){
+document.getElementById("search").value="";
+["budget","connection","kind"].forEach(id=>{
+document.getElementById(id).value="all";
+});
+document.getElementById("sort").value="default";
+render();
+}
+
 document.getElementById("search").addEventListener("input",render);
-document.getElementById("connection").addEventListener("change",render);
-document.getElementById("sort").addEventListener("change",render);
+["budget","connection","kind","sort"].forEach(id=>{
+document.getElementById(id).addEventListener("change",render);
+});
 render();
 </script>
 </body>
